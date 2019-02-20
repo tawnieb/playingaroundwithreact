@@ -72,8 +72,9 @@ onSearchChange = (event) => {
   //use map to render a list of items as HTML elements
   render() {
     //destructuring
-    const { searchTerm, result } = this.state;
-    const page = (result && result.page) || 0;
+    const { searchTerm, results, searchKey } = this.state;
+    const page = (results && results[searchKey] && results[searchKey].page) || 0;
+    const list = (results && results[searchKey] && results[searchKey].hits) || [];
     return  (
       <div className="page">
         <div className="interactions">
